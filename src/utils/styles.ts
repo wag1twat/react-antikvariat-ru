@@ -1,0 +1,9 @@
+export const gap = 4
+export const spacing = gap
+export const padding = gap
+export const margin = gap
+export const gradientConfirm = 'linear-gradient(#43cea2, #185a9d)'
+export const gradientHoverConfirm = 'linear-gradient(#185a9d, #43cea2)'
+export const gradientCancel = 'linear-gradient(#d66d75, #e29587)'
+export const gradientHoverCancel = 'linear-gradient(#e29587, #d66d75)'
+export const gradientActive = 'linear-gradient(#000428, #004e92)'
