@@ -9,7 +9,7 @@ import { ApiOptions, GetResult, AxiosBaseSuccessRequestFields } from './types'
 export const useGet = <R = {}>(
   path: string,
   options: Partial<ApiOptions>,
-  axiosRequestConfig?: AxiosRequestConfig,
+  //  axiosRequestConfig?: AxiosRequestConfig,
 ): GetResult<(R & AxiosBaseSuccessRequestFields) | null> => {
   /* state */
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -22,7 +22,7 @@ export const useGet = <R = {}>(
     onSuccess,
     onError,
     apiVersion,
-    service,
+    queries = '',
     resetOnSuccess,
     resetOnError,
   } = options
@@ -80,7 +80,7 @@ export const useGet = <R = {}>(
       setIsLoading(true)
       setError(null)
       try {
-        const response = await instance.get(path, axiosRequestConfig)
+        const response = await instance.get(path, payload)
         handleResponse(response)
         return response.data
       } catch (caughtError) {
@@ -91,10 +91,10 @@ export const useGet = <R = {}>(
       }
     },
     [
-      service,
+      queries,
       apiVersion,
       path,
-      axiosRequestConfig,
+      // axiosRequestConfig,
       handleResponse,
       handleError,
     ],

@@ -5,7 +5,6 @@ import SecondaryLayoutMenu from 'components/SecondatyLayoutMenu.tsx'
 import React from 'react'
 import { margin, spacing } from 'utils/styles'
 import CategoryItem from './CategoryItem'
-import AddCategoryForm from 'Forms/AddCategoryForm'
 import {
   ICategories,
   ICategoryItemFromRequest,
@@ -30,7 +29,6 @@ const Categories: ICategories = () => {
           ))}
         </Stack>
       </Loader>
-      <AddCategoryForm />
     </Stack>
   )
 }

@@ -21,6 +21,10 @@ const breakpoints = createBreakpoints({
 export default extendTheme({
   ...theme,
   breakpoints,
+  components: {
+    Input: { ...theme.components.Input, defaultProps: { size: 'sm' } },
+    Button: { ...theme.components.Button, defaultProps: { size: 'sm' } },
+  },
   layerStyles,
   fonts: {
     body: 'Roboto',

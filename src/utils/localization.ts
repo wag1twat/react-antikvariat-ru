@@ -1,3 +1,8 @@
+export interface LocalizationItemForm {
+  label: string
+  placeholder: string
+  add: string
+}
 export interface LocalizationItem {
   app: string
   buttonLogin: string
@@ -15,7 +20,8 @@ export interface LocalizationItem {
   drawerMenuHeader: string
   drawerNewCategory: string
   form: {
-    category: { label: string; placeholder: string }
+    category: LocalizationItemForm
+    subCategory: LocalizationItemForm
   }
 }
 
@@ -48,7 +54,13 @@ export const localization: Localization = {
     form: {
       category: {
         label: 'Наименование категории',
-        placeholder: 'Введите наименование категории',
+        placeholder: 'Введите наименование категории...',
+        add: 'Сохранить категорию',
+      },
+      subCategory: {
+        label: 'Наименования подкатегорий',
+        placeholder: 'Введите наименование подкатегории...',
+        add: 'Добавить подкатегорию',
       },
     },
   },
@@ -74,8 +86,14 @@ export const localization: Localization = {
     drawerNewCategory: 'Additing new category',
     form: {
       category: {
-        label: 'Наименование категории',
+        label: 'Name of category',
         placeholder: 'Type category name here...',
+        add: 'Add category',
+      },
+      subCategory: {
+        label: 'Name of subcategory',
+        placeholder: 'Type subcategory name here...',
+        add: 'Add subcategory',
       },
     },
   },

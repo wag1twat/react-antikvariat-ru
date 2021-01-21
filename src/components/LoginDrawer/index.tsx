@@ -1,31 +1,31 @@
 import {
   Drawer,
+  DrawerCloseButton,
   DrawerContent,
   DrawerFooter,
   DrawerOverlay,
   Input,
   Stack,
   useDisclosure,
-} from '@chakra-ui/react'
-import GradienCanceltButton from 'components/Buttons/GradientCancelButton'
-import GradientConfirmButton from 'components/Buttons/GradientConfirmButton'
-import CustDrawerBody from 'components/Drawerscomponents/CustDrawerBody'
-import CustDrawerCloseButton from 'components/Drawerscomponents/CustDrawerCloseButton'
-import CustDrawerHeader from 'components/Drawerscomponents/CustDrawerHeader'
-import DrawerBox from 'components/Drawerscomponents/DrawerBox'
-import useLocations from 'hooks/useLocations'
-import React from 'react'
-import { Nullable } from 'types/utility'
-import { UserIcon } from 'utils/icons'
-import { margin, padding, spacing } from 'utils/styles'
+} from "@chakra-ui/react";
+import GradienCanceltButton from "components/Buttons/GradientCancelButton";
+import GradientConfirmButton from "components/Buttons/GradientConfirmButton";
+import CustDrawerBody from "components/DrawersComponents/CustDrawerBody";
+import CustDrawerHeader from "components/DrawersComponents/CustDrawerHeader";
+import DrawerBox from "components/DrawersComponents/DrawerBox";
+import useLocations from "hooks/useLocations";
+import React from "react";
+import { Nullable } from "types/utility";
+import { UserIcon } from "utils/icons";
+import { margin, padding, spacing } from "utils/styles";
 
 const LoginDrawer = () => {
-  const { localization } = useLocations()
+  const { localization } = useLocations();
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const ref: React.MutableRefObject<Nullable<HTMLInputElement>> = React.useRef(
-    null,
-  )
+    null
+  );
 
   return (
     <DrawerBox>
@@ -45,7 +45,7 @@ const LoginDrawer = () => {
       >
         <DrawerOverlay>
           <DrawerContent>
-            <CustDrawerCloseButton />
+            <DrawerCloseButton size="md" top={padding} right={padding} />;{" "}
             <CustDrawerHeader>{localization.loginHeader}</CustDrawerHeader>
             <CustDrawerBody>
               <Stack spacing={spacing} padding={padding}>
@@ -73,7 +73,7 @@ const LoginDrawer = () => {
         </DrawerOverlay>
       </Drawer>
     </DrawerBox>
-  )
-}
+  );
+};
 
-export default LoginDrawer
+export default LoginDrawer;

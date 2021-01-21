@@ -6,25 +6,25 @@ import {
   DrawerOverlay,
   useDisclosure,
   IconButton,
-} from '@chakra-ui/react'
-import DefaultLayoutMenu from 'components/DefaultLayoutMenu'
-import CustDrawerBody from 'components/Drawerscomponents/CustDrawerBody'
-import CustDrawerCloseButton from 'components/Drawerscomponents/CustDrawerCloseButton'
-import CustDrawerHeader from 'components/Drawerscomponents/CustDrawerHeader'
-import DrawerBox from 'components/Drawerscomponents/DrawerBox'
-import useLocations from 'hooks/useLocations'
-import React from 'react'
-import { Nullable } from 'types/utility'
-import { MenuIcon } from 'utils/icons'
-import { margin, spacing } from 'utils/styles'
+  DrawerCloseButton,
+} from "@chakra-ui/react";
+import DefaultLayoutMenu from "components/DefaultLayoutMenu";
+import CustDrawerBody from "components/DrawersComponents/CustDrawerBody";
+import CustDrawerHeader from "components/DrawersComponents/CustDrawerHeader";
+import DrawerBox from "components/DrawersComponents/DrawerBox";
+import useLocations from "hooks/useLocations";
+import React from "react";
+import { Nullable } from "types/utility";
+import { MenuIcon } from "utils/icons";
+import { margin, padding, spacing } from "utils/styles";
 
 const MenuDrawer = () => {
-  const { localization } = useLocations()
+  const { localization } = useLocations();
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const ref: React.MutableRefObject<Nullable<HTMLInputElement>> = React.useRef(
-    null,
-  )
+    null
+  );
 
   return (
     <DrawerBox>
@@ -44,7 +44,7 @@ const MenuDrawer = () => {
       >
         <DrawerOverlay>
           <DrawerContent>
-            <CustDrawerCloseButton />
+            <DrawerCloseButton size="md" top={padding} right={padding} />;{" "}
             <CustDrawerHeader>{localization.drawerMenuHeader}</CustDrawerHeader>
             <CustDrawerBody>
               <DefaultLayoutMenu
@@ -63,7 +63,7 @@ const MenuDrawer = () => {
         </DrawerOverlay>
       </Drawer>
     </DrawerBox>
-  )
-}
+  );
+};
 
-export default MenuDrawer
+export default MenuDrawer;

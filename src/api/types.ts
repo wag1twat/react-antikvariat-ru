@@ -1,4 +1,4 @@
-import { AxiosError } from 'axios'
+import { AxiosError, AxiosRequestConfig } from 'axios'
 
 export interface AxiosBaseSuccessRequestFields {
   status: 'success' | 'failed'
@@ -6,19 +6,19 @@ export interface AxiosBaseSuccessRequestFields {
 }
 
 export interface RemoveResult<R> extends ApiResult<R> {
-  remove: (payload?: any) => Promise<void>
+  remove: (payload?: AxiosRequestConfig) => Promise<void>
 }
 
 export interface PutResult<R> extends ApiResult<R> {
-  put: (payload?: any) => Promise<void>
+  put: (payload?: AxiosRequestConfig) => Promise<void>
 }
 
 export interface PostResult<R> extends ApiResult<R> {
-  post: (payload?: any) => Promise<void>
+  post: (payload?: AxiosRequestConfig) => Promise<void>
 }
 
 export interface GetResult<R> extends ApiResult<R> {
-  get: (payload?: any) => Promise<R>
+  get: (payload?: AxiosRequestConfig) => Promise<R>
 }
 
 export interface DownloadResult {
@@ -33,7 +33,7 @@ export interface ApiOptions {
   apiVersion: number
   onSuccess(result: any): void
   onError(error: any): void
-  service: string
+  queries: string
   resetOnSuccess: boolean
   resetOnError: boolean
 }
@@ -54,7 +54,7 @@ export interface IDefaultOptions {
 export interface IUseRequestOptions<R> extends IDefaultOptions {
   onSuccess(result: R | null): void
   onError(error: AxiosError): void
-  service: string
+  queries: string
   resetOnSuccess: boolean
   resetOnError: boolean
 }

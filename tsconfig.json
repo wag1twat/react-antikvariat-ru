@@ -4,10 +4,14 @@
     "baseUrl": "./src",
     "module": "esnext",
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "sourceMap": true,
     "allowJs": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "moduleResolution": "node",
     "rootDir": "src",
     "noImplicitReturns": true,
@@ -23,11 +27,14 @@
     "isolatedModules": true,
     "noEmit": true,
     "experimentalDecorators": true,
-    "noFallthroughCasesInSwitch": true,
-    "paths": {
-      "src": ["./src"]
-    }
+    "noFallthroughCasesInSwitch": true
   },
-  "exclude": ["node_modules", "build"],
-  "include": ["src", "types"]
+  "exclude": [
+    "node_modules",
+    "build"
+  ],
+  "include": [
+    "src",
+    "types"
+  ]
 }
