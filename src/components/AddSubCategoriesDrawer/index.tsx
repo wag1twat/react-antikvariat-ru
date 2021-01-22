@@ -1,15 +1,12 @@
 import {
   Drawer,
   DrawerContent,
-  DrawerFooter,
   DrawerOverlay,
-  Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
   IconButton,
   Input,
-  ModalProps,
   Stack,
 } from "@chakra-ui/react";
 import GradienCanceltButton from "components/Buttons/GradientCancelButton";
@@ -20,18 +17,21 @@ import React from "react";
 import DrawerBox from "components/DrawersComponents/DrawerBox";
 import CustDrawerHeader from "components/DrawersComponents/CustDrawerHeader";
 import CustDrawerBody from "components/DrawersComponents/CustDrawerBody";
-import { Controller, useFieldArray, useForm } from "react-hook-form";
+import { useFieldArray, useForm } from "react-hook-form";
 import { padding, spacing } from "utils/styles";
 import { IAddSubCategoriesDrawer, IAddSubCategoriesFormData } from "./types";
 import { AddSubCategoriesSchema } from "./schema";
 import { DeleteIcon } from "utils/icons";
 import { usePost } from "api/usePost";
+import CustDrawerFooter from "components/DrawersComponents/CustDrawerFooter";
 
 const AddSubCategoriesDrawer: IAddSubCategoriesDrawer = ({
   categoryId,
   isOpen,
   onClose,
 }) => {
+  const size = "xs";
+
   const { localization } = useLocations();
 
   const {
@@ -43,7 +43,7 @@ const AddSubCategoriesDrawer: IAddSubCategoriesDrawer = ({
     register,
   } = useForm<IAddSubCategoriesFormData>({
     defaultValues: {
-      subcategories: [{ name: "subcategory" }, { name: "subcategory" }],
+      subcategories: [{ name: "" }, { name: "" }],
     },
     shouldUnregister: false,
     resolver: yupResolver(AddSubCategoriesSchema),
@@ -87,7 +87,7 @@ const AddSubCategoriesDrawer: IAddSubCategoriesDrawer = ({
         <DrawerOverlay>
           <DrawerContent>
             <CustDrawerHeader>
-              {localization.drawerNewCategory}
+              {localization.drawerNewSubcategoriesHeader}
             </CustDrawerHeader>
             <CustDrawerBody>
               <Stack p={padding} spacing={spacing}>
@@ -108,6 +108,7 @@ const AddSubCategoriesDrawer: IAddSubCategoriesDrawer = ({
                               )}
                             >
                               <Input
+                                size={size}
                                 name={`subcategories[${index}].name`}
                                 ref={register()}
                                 defaultValue={field.name}
@@ -120,11 +121,14 @@ const AddSubCategoriesDrawer: IAddSubCategoriesDrawer = ({
                               </FormErrorMessage>
                             </FormControl>
                             <IconButton
+                              size={size}
                               aria-label="data-delete-subcategory"
                               colorScheme="red"
                               icon={<DeleteIcon />}
                               onClick={() => remove(index)}
-                              isDisabled={isLoading}
+                              isDisabled={
+                                isLoading || form.subcategories.length === 1
+                              }
                             />
                           </Stack>
                         );
@@ -134,9 +138,10 @@ const AddSubCategoriesDrawer: IAddSubCategoriesDrawer = ({
                 )}
               </Stack>
             </CustDrawerBody>
-            <DrawerFooter p={padding}>
+            <CustDrawerFooter>
               <Stack spacing={spacing}>
                 <GradientConfirmButton
+                  size={size}
                   onClick={() => append({ name: "" })}
                   isDisabled={isLoading}
                 >
@@ -144,6 +149,7 @@ const AddSubCategoriesDrawer: IAddSubCategoriesDrawer = ({
                 </GradientConfirmButton>
                 <Stack spacing={spacing} direction="row">
                   <GradienCanceltButton
+                    size={size}
                     mr={3}
                     onClick={onClose}
                     isDisabled={isLoading}
@@ -151,14 +157,15 @@ const AddSubCategoriesDrawer: IAddSubCategoriesDrawer = ({
                     {localization.buttonCancel}
                   </GradienCanceltButton>
                   <GradientConfirmButton
+                    size={size}
                     onClick={addSubCategories}
                     isDisabled={!formState.isValid || isLoading}
                   >
-                    {localization.form.category.add}
+                    {localization.form.subCategory.save}
                   </GradientConfirmButton>
                 </Stack>
               </Stack>
-            </DrawerFooter>
+            </CustDrawerFooter>
           </DrawerContent>
         </DrawerOverlay>
       </Drawer>

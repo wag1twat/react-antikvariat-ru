@@ -1,18 +1,28 @@
-import { Button, Stack, StackProps } from "@chakra-ui/react";
+import { Button, ModalProps, Stack, StackProps } from "@chakra-ui/react";
 import useLocations from "hooks/useLocations";
 import React from "react";
 import { useHistory } from "react-router-dom";
 import routes from "utils/routes";
 import { gradientActive } from "utils/styles";
 
-const DefaultLayoutMenu: React.FC<StackProps> = (props) => {
+const DefaultLayoutMenu: React.FC<
+  StackProps & { onClose?: ModalProps["onClose"] }
+> = ({ onClose, ...props }) => {
   const { localization } = useLocations();
 
   const history = useHistory();
 
   const [pathname, setPathName] = React.useState(history.location.pathname);
 
-  const checkoutRoute = (path: string) => () => history.push(path);
+  const checkoutRoute = (path: string) => () => {
+    history.push(path);
+    if (
+      (props.flexDirection === "column" && onClose) ||
+      (props.direction === "column" && onClose)
+    ) {
+      onClose();
+    }
+  };
 
   history.listen((location) => {
     setPathName(location.pathname);

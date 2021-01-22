@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import DefaultLayoutMenu from "components/DefaultLayoutMenu";
 import CustDrawerBody from "components/DrawersComponents/CustDrawerBody";
+import CustDrawerFooter from "components/DrawersComponents/CustDrawerFooter";
 import CustDrawerHeader from "components/DrawersComponents/CustDrawerHeader";
 import DrawerBox from "components/DrawersComponents/DrawerBox";
 import useLocations from "hooks/useLocations";
@@ -44,21 +45,22 @@ const MenuDrawer = () => {
       >
         <DrawerOverlay>
           <DrawerContent>
-            <DrawerCloseButton size="md" top={padding} right={padding} />;{" "}
+            <DrawerCloseButton size="md" top={padding} right={padding} />
             <CustDrawerHeader>{localization.drawerMenuHeader}</CustDrawerHeader>
             <CustDrawerBody>
               <DefaultLayoutMenu
                 direction="column"
                 mx={margin}
                 spacing={spacing / 2}
+                onClose={onClose}
               />
             </CustDrawerBody>
-            <DrawerFooter>
+            <CustDrawerFooter>
               <Button variant="outline" mr={3} onClick={onClose}>
                 {localization.buttonCancel}
               </Button>
               <Button color="blue">{localization.buttonLogin}</Button>
-            </DrawerFooter>
+            </CustDrawerFooter>
           </DrawerContent>
         </DrawerOverlay>
       </Drawer>

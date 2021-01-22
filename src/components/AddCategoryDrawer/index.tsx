@@ -1,15 +1,11 @@
 import {
   Drawer,
   DrawerContent,
-  DrawerFooter,
   DrawerOverlay,
-  Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
-  IconButton,
   Input,
-  ModalProps,
   Stack,
 } from "@chakra-ui/react";
 import GradienCanceltButton from "components/Buttons/GradientCancelButton";
@@ -20,15 +16,16 @@ import React from "react";
 import DrawerBox from "components/DrawersComponents/DrawerBox";
 import CustDrawerHeader from "components/DrawersComponents/CustDrawerHeader";
 import CustDrawerBody from "components/DrawersComponents/CustDrawerBody";
-import { Controller, useFieldArray, useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { padding, spacing } from "utils/styles";
 import { IAddCategoryDrawer, IAddCategoryFormData } from "./types";
 import { AddCategorySchema } from "./schema";
-import { DeleteIcon } from "utils/icons";
-import { useGet } from "api/useGet";
 import { usePost } from "api/usePost";
+import CustDrawerFooter from "components/DrawersComponents/CustDrawerFooter";
 
 const AddCategoryDrawer: IAddCategoryDrawer = ({ isOpen, onClose }) => {
+  const size = "xs";
+
   const { localization } = useLocations();
 
   const {
@@ -92,6 +89,7 @@ const AddCategoryDrawer: IAddCategoryDrawer = ({ isOpen, onClose }) => {
                           {localization.form.category.label}
                         </FormLabel>
                         <Input
+                          size={size}
                           {...props}
                           placeholder={localization.form.category.placeholder}
                         />
@@ -104,25 +102,27 @@ const AddCategoryDrawer: IAddCategoryDrawer = ({ isOpen, onClose }) => {
                 />
               </Stack>
             </CustDrawerBody>
-            <DrawerFooter p={padding}>
+            <CustDrawerFooter>
               <Stack spacing={spacing}>
                 <Stack spacing={spacing} direction="row">
                   <GradienCanceltButton
                     mr={3}
+                    size={size}
                     onClick={onClose}
                     isDisabled={isLoading}
                   >
                     {localization.buttonCancel}
                   </GradienCanceltButton>
                   <GradientConfirmButton
+                    size={size}
                     onClick={addCategory}
                     isDisabled={!formState.isValid || isLoading}
                   >
-                    {localization.form.category.add}
+                    {localization.form.category.save}
                   </GradientConfirmButton>
                 </Stack>
               </Stack>
-            </DrawerFooter>
+            </CustDrawerFooter>
           </DrawerContent>
         </DrawerOverlay>
       </Drawer>

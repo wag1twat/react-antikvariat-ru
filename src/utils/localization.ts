@@ -2,6 +2,7 @@ export interface LocalizationItemForm {
   label: string;
   placeholder: string;
   add: string;
+  save: string;
 }
 export interface LocalizationItem {
   app: string;
@@ -16,10 +17,13 @@ export interface LocalizationItem {
   buttonTable: string;
   buttonAdd: string;
   buttonAddSubCategories: string;
+  subcategories: string;
   goodsHeader: string;
   categoriesHeader: string;
   drawerMenuHeader: string;
   drawerNewCategory: string;
+  drawerNewSubcategoriesHeader: string;
+  emptySubcategories: string;
   form: {
     category: LocalizationItemForm;
     subCategory: LocalizationItemForm;
@@ -27,7 +31,6 @@ export interface LocalizationItem {
 }
 
 export interface Localization {
-  en: LocalizationItem;
   ru: LocalizationItem;
 }
 
@@ -51,52 +54,23 @@ export const localization: Localization = {
     //goods
     goodsHeader: "Ваши товары",
     categoriesHeader: "Ваши категории",
+    subcategories: "Подкатегории",
+    emptySubcategories: "Подкатегории отсутствуют",
     drawerMenuHeader: "Меню",
     drawerNewCategory: "Добавление новой категории",
+    drawerNewSubcategoriesHeader: "Добавление новых подкатегорий",
     form: {
       category: {
         label: "Наименование категории",
         placeholder: "Введите наименование категории...",
-        add: "Сохранить категорию",
+        add: "Добавить категорию",
+        save: "Сохранить категорию",
       },
       subCategory: {
         label: "Наименования подкатегорий",
         placeholder: "Введите наименование подкатегории...",
         add: "Добавить подкатегорию",
-      },
-    },
-  },
-  en: {
-    app: "CRM",
-    // login
-    buttonLogin: "Sign in",
-    loginHeader: "Sign in to your account",
-    loginPlaceholder: "Type your login here...",
-    loginPasswordPlaceholder: "Type your password here...",
-    // registration
-    regisration: "Sign up",
-    // buttons
-    buttonSave: "Save",
-    buttonCancel: "Cancel",
-    buttonCard: "Cards",
-    buttonTable: "Table",
-    buttonAdd: "Add",
-    buttonAddSubCategories: "Add subcategories",
-    //goods
-    goodsHeader: "Goods",
-    categoriesHeader: "Categories",
-    drawerMenuHeader: "Menu",
-    drawerNewCategory: "Additing new category",
-    form: {
-      category: {
-        label: "Name of category",
-        placeholder: "Type category name here...",
-        add: "Add category",
-      },
-      subCategory: {
-        label: "Name of subcategory",
-        placeholder: "Type subcategory name here...",
-        add: "Add subcategory",
+        save: "Сохранить подкатегории",
       },
     },
   },

@@ -6,7 +6,7 @@ export interface AxiosBaseSuccessRequestFields {
 }
 
 export interface RemoveResult<R> extends ApiResult<R> {
-  remove: (payload?: AxiosRequestConfig) => Promise<void>;
+  remove: (payload?: any) => Promise<void>;
 }
 
 export interface PutResult<R> extends ApiResult<R> {

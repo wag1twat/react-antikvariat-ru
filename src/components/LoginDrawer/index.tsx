@@ -2,7 +2,6 @@ import {
   Drawer,
   DrawerCloseButton,
   DrawerContent,
-  DrawerFooter,
   DrawerOverlay,
   Input,
   Stack,
@@ -11,6 +10,7 @@ import {
 import GradienCanceltButton from "components/Buttons/GradientCancelButton";
 import GradientConfirmButton from "components/Buttons/GradientConfirmButton";
 import CustDrawerBody from "components/DrawersComponents/CustDrawerBody";
+import CustDrawerFooter from "components/DrawersComponents/CustDrawerFooter";
 import CustDrawerHeader from "components/DrawersComponents/CustDrawerHeader";
 import DrawerBox from "components/DrawersComponents/DrawerBox";
 import useLocations from "hooks/useLocations";
@@ -45,7 +45,7 @@ const LoginDrawer = () => {
       >
         <DrawerOverlay>
           <DrawerContent>
-            <DrawerCloseButton size="md" top={padding} right={padding} />;{" "}
+            <DrawerCloseButton size="md" top={padding} right={padding} />
             <CustDrawerHeader>{localization.loginHeader}</CustDrawerHeader>
             <CustDrawerBody>
               <Stack spacing={spacing} padding={padding}>
@@ -61,14 +61,14 @@ const LoginDrawer = () => {
                 />
               </Stack>
             </CustDrawerBody>
-            <DrawerFooter>
+            <CustDrawerFooter>
               <GradienCanceltButton mr={3} onClick={onClose}>
                 {localization.buttonCancel}
               </GradienCanceltButton>
               <GradientConfirmButton>
                 {localization.buttonLogin}
               </GradientConfirmButton>
-            </DrawerFooter>
+            </CustDrawerFooter>
           </DrawerContent>
         </DrawerOverlay>
       </Drawer>

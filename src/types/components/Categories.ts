@@ -10,6 +10,8 @@ export interface ISubCategoryItemFromRequest {
 
 export interface ICategoryItemProps extends ICategoryItemFromRequest {
   index: number;
+  deleteCategory: (id: string) => void;
+  isLoading: boolean;
 }
 export interface ICategoryItem extends React.FC<ICategoryItemProps> {}
 export interface ICategories extends React.FC {}
