@@ -1,30 +1,30 @@
-import { Box, Button, Heading, Stack, useDisclosure } from '@chakra-ui/react'
-import AddCategoryDrawer from 'components/AddCategoryDrawer'
-import GradientConfirmButton from 'components/Buttons/GradientConfirmButton'
-import useLocalizationRouteName from 'hooks/useLocalizationRouteName'
-import useLocations from 'hooks/useLocations'
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { CardIcon } from 'utils/icons'
-import routes from 'utils/routes'
-import { spacing } from 'utils/styles'
+import { Button, Heading, Stack, useDisclosure } from "@chakra-ui/react";
+import AddCategoryDrawer from "components/AddCategoryDrawer";
+import GradientConfirmButton from "components/Buttons/GradientConfirmButton";
+import useLocalizationRouteName from "hooks/useLocalizationRouteName";
+import useLocations from "hooks/useLocations";
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { CardIcon } from "utils/icons";
+import routes from "utils/routes";
+import { spacing } from "utils/styles";
 
 const SecondaryLayoutMenu = () => {
-  const history = useHistory()
+  const history = useHistory();
 
-  const [pathname, setPathname] = React.useState(history.location.pathname)
+  const [pathname, setPathname] = React.useState(history.location.pathname);
 
   const {
     isOpen: isOpenAddCategoryDrawer,
     onOpen: onOpenAddCategoryDrawer,
     onClose: onCloseAddCategoryDrawer,
-  } = useDisclosure()
+  } = useDisclosure();
 
-  const { localization } = useLocations()
+  const { localization } = useLocations();
 
-  const { header } = useLocalizationRouteName()
+  const { header } = useLocalizationRouteName();
 
-  history.listen((location) => setPathname(location.pathname))
+  history.listen((location) => setPathname(location.pathname));
 
   return (
     <Stack direction="column" spacing={spacing}>
@@ -51,7 +51,7 @@ const SecondaryLayoutMenu = () => {
         onClose={onCloseAddCategoryDrawer}
       />
     </Stack>
-  )
-}
+  );
+};
 
-export default SecondaryLayoutMenu
+export default SecondaryLayoutMenu;

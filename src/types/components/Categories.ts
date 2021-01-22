@@ -1,9 +1,15 @@
-import { ISubCategoryFormData } from 'components/AddCategoryDrawer/types'
-
 export interface ICategoryItemFromRequest {
-  id: string // uuidv4
-  name: string
-  subCategories: ISubCategoryFormData[] | null
+  id: string; // uuidv4
+  name: string;
 }
-export interface ICategoryItem extends React.FC<ICategoryItemFromRequest> {}
+
+export interface ISubCategoryItemFromRequest {
+  id: string; // uuidv4
+  name: string;
+}
+
+export interface ICategoryItemProps extends ICategoryItemFromRequest {
+  index: number;
+}
+export interface ICategoryItem extends React.FC<ICategoryItemProps> {}
 export interface ICategories extends React.FC {}

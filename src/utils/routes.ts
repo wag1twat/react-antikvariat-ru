@@ -1,4 +1,4 @@
 export default {
-  goods: '/goods',
-  categories: '/categories',
-}
+  goods: "/goods",
+  categories: "/categories",
+};

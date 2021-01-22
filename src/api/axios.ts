@@ -1,5 +1,6 @@
-import axios from 'axios'
+import axios from "axios";
 
 export const instance = axios.create({
-  baseURL: 'https://us-central1-antikvariatru-57a0d.cloudfunctions.net',
-})
+  baseURL:
+    "https://us-central1-antikvariatru-57a0d.cloudfunctions.net/app/api/v1",
+});

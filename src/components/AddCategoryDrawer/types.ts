@@ -1,9 +1,10 @@
-export interface ISubCategoryFormData {
-  name: string
-}
+import { ModalProps } from "@chakra-ui/react";
+
 export interface IAddCategoryFormData {
-  name: string
-  subCategories: ISubCategoryFormData[]
+  name: string;
 }
-export interface IAddCategoryFormProps {}
-export interface IAddCategoryForm extends React.FC<IAddCategoryFormProps> {}
+export interface IAddCaregoryDrawerProps {
+  onClose: ModalProps["onClose"];
+  isOpen: ModalProps["isOpen"];
+}
+export interface IAddCategoryDrawer extends React.FC<IAddCaregoryDrawerProps> {}

@@ -3,14 +3,14 @@ import { AxiosRequestConfig } from "axios";
 
 import { handleErrorRequest, handleSuccessRequest } from "./handlers";
 import { instance } from "./axios";
-import { ApiOptions, GetResult, AxiosBaseSuccessRequestFields } from "./types";
+import { ApiOptions, AxiosBaseSuccessRequestFields, PostResult } from "./types";
 
 /* R - тип возвращаемого поля result */
-export const useGet = <R = {}>(
+export const usePost = <R = {}>(
   path: string,
   options: Partial<ApiOptions>
   //  axiosRequestConfig?: AxiosRequestConfig,
-): GetResult<(R & AxiosBaseSuccessRequestFields) | null> => {
+): PostResult<(R & AxiosBaseSuccessRequestFields) | null> => {
   /* state */
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>(null);
@@ -75,14 +75,12 @@ export const useGet = <R = {}>(
   }, [resetOnSuccess, resetOnError, result, error, reset]);
 
   /* call */
-  const get = useCallback(
-    async (payload = {}) => {
+  const post = useCallback(
+    async (payload = {}, config = {}) => {
       setIsLoading(true);
-
       setError(null);
-
       try {
-        const response = await instance.get(path, { params: payload });
+        const response = await instance.post(path, payload, config);
         handleResponse(response);
         return response.data;
       } catch (caughtError) {
@@ -93,8 +91,6 @@ export const useGet = <R = {}>(
       }
     },
     [
-      queries,
-      apiVersion,
       path,
       // axiosRequestConfig,
       handleResponse,
@@ -103,7 +99,7 @@ export const useGet = <R = {}>(
   );
   /* result */
   return {
-    get,
+    post,
     reset,
     result,
     headers,

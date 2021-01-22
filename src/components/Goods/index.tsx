@@ -1,21 +1,21 @@
-import { Stack } from '@chakra-ui/react'
-import { useGet } from 'api/useGet'
-import Loader from 'components/Loader'
-import SecondaryLayoutMenu from 'components/SecondatyLayoutMenu.tsx'
-import React, { useEffect } from 'react'
+import { Stack } from "@chakra-ui/react";
+import { useGet } from "api/useGet";
+import Loader from "components/Loader";
+import SecondaryLayoutMenu from "components/SecondatyLayoutMenu.tsx";
+import React, { useEffect } from "react";
 
-import { margin, spacing } from 'utils/styles'
-import GoodItem from './GoodItem'
-import { IGoodItemFromRequest, IGoods } from 'types/components/Goods'
+import { margin, spacing } from "utils/styles";
+import GoodItem from "./GoodItem";
+import { IGoodItemFromRequest, IGoods } from "types/components/Goods";
 
 const Goods: IGoods = () => {
   const { get, result, isLoading } = useGet<{
-    goods: IGoodItemFromRequest[] | null
-  }>('/getgoods', {})
+    goods: IGoodItemFromRequest[] | null;
+  }>("/goods", {});
 
   useEffect(() => {
-    get()
-  }, [get])
+    get();
+  }, [get]);
 
   return (
     <Stack spacing={spacing} mx={margin}>
@@ -28,7 +28,7 @@ const Goods: IGoods = () => {
         </Stack>
       </Loader>
     </Stack>
-  )
-}
+  );
+};
 
-export default Goods
+export default Goods;

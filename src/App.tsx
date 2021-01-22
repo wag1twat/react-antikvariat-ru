@@ -1,12 +1,12 @@
-import { ChakraProvider, theme, ThemeProvider } from '@chakra-ui/react'
-import Categories from 'components/Categories'
+import { ChakraProvider, theme, ThemeProvider } from "@chakra-ui/react";
+import Categories from "components/Categories";
 
-import Goods from 'components/Goods'
-import { LocationsProvider } from 'context/locations'
-import React from 'react'
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
-import routes from 'utils/routes'
-import DefaultLayout from './components/DefaultLayout'
+import Goods from "components/Goods";
+import { LocationsProvider } from "context/locations";
+import React from "react";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import routes from "utils/routes";
+import DefaultLayout from "./components/DefaultLayout";
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
         </LocationsProvider>
       </ThemeProvider>
     </ChakraProvider>
-  )
+  );
 }
 
-export default App
+export default App;

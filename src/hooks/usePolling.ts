@@ -1,30 +1,30 @@
-import { useEffect } from 'react'
+import { useEffect } from "react";
 
 interface IUsePolling {
   (
     isActive: boolean,
     request: (payload: any) => void,
     payload: any,
-    interval?: number,
-  ): void
+    interval?: number
+  ): void;
 }
 
 export const usePolling: IUsePolling = (
   isActive,
   request,
   payload,
-  interval = 500,
+  interval = 5000
 ) => {
   useEffect(() => {
-    let statusPolling: NodeJS.Timeout
+    let statusPolling: NodeJS.Timeout;
     if (isActive) {
-      request(payload)
+      request(payload);
       statusPolling = setInterval(() => {
-        request(payload)
-      }, interval)
+        request(payload);
+      }, interval);
     }
     return () => {
-      clearInterval(statusPolling)
-    }
-  }, [isActive, request, payload, interval])
-}
+      clearInterval(statusPolling);
+    };
+  }, [isActive, request, payload, interval]);
+};
